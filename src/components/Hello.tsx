@@ -1,5 +1,4 @@
 import * as React from 'react'
-import Game from '../lib/game'
 
 export interface HelloProps { compiler: string; framework: string; }
 

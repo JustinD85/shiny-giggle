@@ -1,7 +1,9 @@
 import * as Phaser from 'phaser'
 
-var config = {
+export var config = {
   type: Phaser.AUTO,
+  parent: 'phaser-target',
+  pixelArt:true,
   width: 640,
   height: 480,
   physics: {
@@ -16,9 +18,10 @@ var config = {
   },
 }
 
-export default new Phaser.Game(config)
+//Use this if I want the game to load without storing it first
+// export default new Phaser.Game(config, 'phaser-target')
 
-export function preload() {
+ function preload() {
   this.load.setBaseURL('http://labs.phaser.io')
 
   this.load.image('sky', 'assets/skies/space3.png')
@@ -26,11 +29,10 @@ export function preload() {
   this.load.image('red', 'assets/particles/red.png')
 }
 
-export  function create() {
+ function create() {
   this.add.image(400, 300, 'sky')
 
   var particles = this.add.particles('red')
-
   var emitter = particles.createEmitter({
     speed: 100,
     scale: { start: 1, end: 0 },
